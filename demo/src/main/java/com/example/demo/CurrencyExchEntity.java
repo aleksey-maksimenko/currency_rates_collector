@@ -48,7 +48,9 @@ public class CurrencyExchEntity {
 
     @Override
     public String toString() {
-        return String.format("%-6s %-30s %-10.4f %-12s %-8.4f %s",
-                currencyCode, currencyName, exchangeRate, rateDate, dailyChange, requestDateTime);
+        //return String.format("%-6s %-30s %-10.4f %-12s %-8.4f %s",
+        //        currencyCode, currencyName, exchangeRate, rateDate, dailyChange, requestDateTime);
+        return String.format("%-6s %-30s %-10.4f %-12s %-8.4f",
+                currencyCode, currencyName, exchangeRate, rateDate, dailyChange);
     }
 }

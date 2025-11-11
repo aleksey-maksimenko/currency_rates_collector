@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список валют</title>
+</head>
+<body>
+<h2>Курсы валют</h2>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Код</th>
+        <th>Название</th>
+        <th>Курс (к рублю)</th>
+        <th>Дата</th>
+        <th>Изменение за день</th>
+    </tr>
+    <tr th:each="c : ${currencies}">
+        <td th:text="${c.currencyCode}"></td>
+        <td th:text="${c.currencyName}"></td>
+        <td th:text="${c.exchangeRate}"></td>
+        <td th:text="${c.rateDate}"></td>
+        <td th:text="${c.dailyChange}"></td>
+    </tr>
+</table>
+
+<br>
+
+<div>
+    <form th:action="@{/view}" method="get">
+        <input type="hidden" name="date" th:value="${date}" />
+        <input type="hidden" name="sortBy" th:value="${sortBy}" />
+        <input type="hidden" name="asc" th:value="${asc}" />
+
+        <button type="submit" th:if="${hasPrev}" th:name="page" th:value="${page - 1}">Назад</button>
+        <button type="submit" th:if="${hasNext}" th:name="page" th:value="${page + 1}">Вперёд</button>
+    </form>
+</div>
+
+</body>
+</html>
